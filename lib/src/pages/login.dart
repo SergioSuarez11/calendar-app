@@ -5,7 +5,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-
 class LoginPage extends StatefulWidget {
   @override
   createState() => _LoginPageState();
@@ -43,15 +42,23 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 20,
               ),
-              ButtonLogin()
-              ,SizedBox(
+              ButtonLogin(),
+              SizedBox(
+                height: 15,
+              ),
+              ButtonRegister(),
+              SizedBox(
                 height: 50,
               ),
-              Text("or",style:TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold)),SizedBox(
+              Text("or",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(
                 height: 25,
               ),
               ButtonGoogle()
-
             ],
           ),
         ));
@@ -99,30 +106,31 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 45, vertical: 5),
       child: TextFormField(
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-              labelText: 'Password',
-              labelStyle: TextStyle(color: Colors.white),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.0),
-                borderSide: BorderSide(
-                  color: Colors.white,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.0),
-                borderSide: BorderSide(
-                  color: Colors.white,
-                  width: 2.0,
-                ),
-              ),
-              prefixIcon: Icon(
-                Icons.password,
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+            labelText: 'Password',
+            labelStyle: TextStyle(color: Colors.white),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.0),
+              borderSide: BorderSide(
                 color: Colors.white,
               ),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
-                  obscureText: true,),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.0),
+              borderSide: BorderSide(
+                color: Colors.white,
+                width: 2.0,
+              ),
+            ),
+            prefixIcon: Icon(
+              Icons.password,
+              color: Colors.white,
+            ),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        obscureText: true,
+      ),
     );
   }
 
@@ -137,24 +145,38 @@ class _LoginPageState extends State<LoginPage> {
       color: Colors.white,
       child: Text(
         'Log in',
-        style: TextStyle(color: Colors.deepPurpleAccent, fontSize: 20, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.deepPurpleAccent,
+            fontSize: 20,
+            fontWeight: FontWeight.bold),
       ),
     );
   }
 
-  Widget ButtonGoogle(){
+  Widget ButtonRegister() {
+    return MaterialButton(
+      onPressed: () {
+        Navigator.pushNamed(context, 'register');
+      },
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(50)),side: BorderSide(color: Colors.white)
+          ),
+      color: Colors.deepPurpleAccent[200],
+      child: Text(
+        "Sign Up",
+        style: TextStyle(color: Colors.white, fontSize: 15),
+      ),
+      minWidth: 200.0,
+      height: 60.0,
+    );
+  }
+
+  Widget ButtonGoogle() {
     return Container(
       child: Column(
-        children: [
-          SignInButton(Buttons.Google, onPressed: (){})
-            
-        ],
+        
+        children:[SignInButton(Buttons.Google, onPressed: () {},shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(75))),)],
       ),
-      
     );
-    
   }
-
-
-
 }
