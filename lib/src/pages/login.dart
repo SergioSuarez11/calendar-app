@@ -1,9 +1,10 @@
-import 'dart:html';
+import 'package:calendar_app/src/provider/google_sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -33,30 +34,6 @@ class _LoginPageState extends State<LoginPage> {
               Signin(),
               SizedBox(
                 height: 20,
-              ),
-              User(),
-              SizedBox(
-                height: 20,
-              ),
-              Password(),
-              SizedBox(
-                height: 20,
-              ),
-              ButtonLogin(),
-              SizedBox(
-                height: 15,
-              ),
-              ButtonRegister(),
-              SizedBox(
-                height: 50,
-              ),
-              Text("or",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 25,
               ),
               ButtonGoogle()
             ],
@@ -159,8 +136,8 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushNamed(context, 'register');
       },
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(50)),side: BorderSide(color: Colors.white)
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+          side: BorderSide(color: Colors.white)),
       color: Colors.deepPurpleAccent[200],
       child: Text(
         "Sign Up",
@@ -174,8 +151,20 @@ class _LoginPageState extends State<LoginPage> {
   Widget ButtonGoogle() {
     return Container(
       child: Column(
-        
-        children:[SignInButton(Buttons.Google, onPressed: () {},shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(75))),)],
+        children: [
+          SignInButton(
+            Buttons.Google,
+            onPressed: () {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+              provider
+                  .googleLogin()
+                  .then((value) => Navigator.pushNamed(context, 'home_page'));
+            },
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(75))),
+          )
+        ],
       ),
     );
   }
