@@ -1,10 +1,8 @@
 import 'package:calendar_app/src/services/Connection_service.dart';
 
-class ConnectionService{
+class ConnectionService {
+  //   TypeRequestModel _typeRequestModel;
+  // List<TypeRequestModel> _listTypeRequest = [];
+  // List<RequestsModel> _listRequestsModel  = [];
 
-    TypeRequestModel _typeRequestModel;
-  List<TypeRequestModel> _listTypeRequest = [];
-  List<RequestsModel> _listRequestsModel  = [];
-
-  
 }
