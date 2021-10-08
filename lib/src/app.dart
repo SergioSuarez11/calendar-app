@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return MaterialApp(
-          title: 'Vado',
+          title: 'Calendario',
           navigatorKey: navigatorKey,
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
