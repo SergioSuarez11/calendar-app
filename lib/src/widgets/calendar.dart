@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('BottomNavigationBar Sample'),
+          title: const Text('Calendario'),
         ),
         body: SfCalendar(
           view: CalendarView.month,

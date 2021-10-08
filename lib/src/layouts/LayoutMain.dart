@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:calendar_app/src/widgets/calendar.dart';
+import 'package:calendar_app/src/pages/formulario.dart';
 
 class LayoutMain extends StatefulWidget {
   LayoutMain({Key? key}) : super(key: key);
@@ -24,9 +25,7 @@ class _LayoutMainState extends State<LayoutMain> {
       case 0:
         return MyHomePage();
       case 1:
-        return Container(
-          child: Text("data"),
-        );
+        return Formulario();
       default:
         return MyHomePage();
     }
@@ -49,11 +48,9 @@ class _LayoutMainState extends State<LayoutMain> {
         children: <Widget>[
           FloatingActionButton(
             onPressed: () {
-              setState(() {
-                counter = counter * counter;
-              });
+              setStatePage(1);
             },
-            child: Text("*X2"),
+            child: Text("+"),
             backgroundColor: Colors.green,
           ),
         ],
