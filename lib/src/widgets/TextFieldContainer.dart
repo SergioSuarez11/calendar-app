@@ -25,7 +25,7 @@ class _TextFieldContainerState extends State<TextFieldContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 0),
+      margin: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
       constraints: BoxConstraints(maxHeight: 40),
       child: TextFormField(
           keyboardType: widget.keyboard,

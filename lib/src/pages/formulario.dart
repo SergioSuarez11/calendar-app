@@ -27,6 +27,14 @@ class _FormularioState extends State<Formulario> {
               text: "Nombre",
               keyboard: TextInputType.text,
             ),
+            TextFieldContainer(
+              text: "Fecha",
+              keyboard: TextInputType.text,
+            ),
+            TextFieldContainer(
+              text: "Hora",
+              keyboard: TextInputType.text,
+            ),
           ],
         ),
       ),
