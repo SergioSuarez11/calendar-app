@@ -133,14 +133,16 @@ class _LoginPageState extends State<LoginPage> {
   Widget ButtonRegister() {
     return MaterialButton(
       onPressed: () {
-        Navigator.pushNamed(context, 'register');
+        final provider =
+            Provider.of<GoogleSignInProvider>(context, listen: false);
+        provider.googleLogin();
       },
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
           side: BorderSide(color: Colors.white)),
       color: Colors.deepPurpleAccent[200],
       child: Text(
-        "Sign Up",
+        "Iniciar Sesion",
         style: TextStyle(color: Colors.white, fontSize: 15),
       ),
       minWidth: 200.0,
@@ -159,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                   Provider.of<GoogleSignInProvider>(context, listen: false);
               provider
                   .googleLogin()
-                  .then((value) => Navigator.pushNamed(context, 'home_page'));
+                  .then((value) => Navigator.pushReplacementNamed(context, 'home_page'));
             },
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(75))),

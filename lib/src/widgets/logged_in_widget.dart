@@ -7,17 +7,15 @@ class LoggedInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Logged In"),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: Text('Logout'),
-            onPressed: () {
-            
-            },
-          )
+
+         actions: [
+           IconButton(onPressed: (){
+             final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
+             provider.logout();
+           }, icon: Icon(Icons.logout))
         ],
       ),
       body: Container(
@@ -27,7 +25,7 @@ class LoggedInWidget extends StatelessWidget {
           CircleAvatar(
             backgroundImage: NetworkImage(user.photoURL!),
           ),
-          Text("Name" + user.displayName!)
+          Text("Name : " + user.displayName!)
         ]),
       ),
     );

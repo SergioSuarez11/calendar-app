@@ -15,7 +15,7 @@ class CalendarApp extends StatelessWidget {
           routes: {
             '/': (context) => LoginPage(),
             'register': (context) => RegisterPage(),
-            'home_page':(context)=> HomePage(),
+            'home_page':(context)=> HomePageState(),
 
           },
 
