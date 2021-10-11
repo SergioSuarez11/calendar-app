@@ -3,7 +3,7 @@ import 'package:calendar_strip/calendar_strip.dart';
 import 'package:flutter/material.dart';
 
 class CalendarStripCustom extends StatefulWidget {
-  final Function? onSelect;
+  Function? onSelect;
   CalendarStripCustom({
     Key? key,
     this.onSelect,

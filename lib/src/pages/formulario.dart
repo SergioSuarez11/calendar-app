@@ -55,9 +55,9 @@ class _FormularioState extends State<Formulario> {
               text: "Descripción del Evento",
               keyboard: TextInputType.text,
             ),
-            // CalendarStripCustom(
-            //       onSelect: onSelect,
-            //     ),
+            CalendarStripCustom(
+                  onSelect: onSelect,
+                ),
             TimePicker(
               timeController: timeController,
                   setTime: setTime,
