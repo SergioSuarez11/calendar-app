@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   syncfusion_flutter_calendar: ^19.3.44
+  calendar_strip: ^1.0.7
 
 dev_dependencies:
   flutter_test:
