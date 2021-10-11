@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   syncfusion_flutter_calendar: ^19.3.44
   calendar_strip: ^1.0.7
+  http: ^0.13.3
+  provider: ^6.0.1
 
 dev_dependencies:
   flutter_test:

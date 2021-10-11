@@ -1,4 +1,6 @@
+import 'package:calendar_app/src/services/Request_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 /// The hove page which hosts the calendar
@@ -11,8 +13,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
+  EventService? _eventService;
+  
+  _getBinnacleView() async {
+    await _eventService!.getTypeRequest();
+  }
+
   @override
   Widget build(BuildContext context) {
+    
+    _eventService = Provider.of<EventService>( context );
+    
     return Scaffold(
         appBar: AppBar(
           title: const Text('Calendario'),
@@ -20,9 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
         body: SfCalendar(
           view: CalendarView.month,
           dataSource: MeetingDataSource(_getDataSource()),
-          // by default the month appointment display mode set as Indicator, we can
-          // change the display mode as appointment using the appointment display
-          // mode property
           monthViewSettings: const MonthViewSettings(
               appointmentDisplayMode: MonthAppointmentDisplayMode.appointment),
         ));
@@ -30,12 +39,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Meeting> _getDataSource() {
     final List<Meeting> meetings = <Meeting>[];
-    final DateTime today = DateTime.now();
-    final DateTime startTime =
-        DateTime(today.year, today.month, today.day, 9, 0, 0);
-    final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(Meeting(
-        'Conference', startTime, endTime, const Color(0xFF0F8644), false));
+    _getBinnacleView();
+    print(_eventService!.listTypeRequest.toString());
+    _eventService!.listTypeRequest.forEach((element) {
+      final DateTime starts = DateTime.parse(element.fecha!);
+      TimeOfDay _startTime = TimeOfDay(hour:int.parse(element.hora!.split(":")[0]),minute: int.parse(element.hora!.split(":")[1]));
+      final DateTime startTime =
+        DateTime(starts.year, starts.month, starts.day, _startTime.hour , _startTime.minute, 0);
+        
+      final DateTime endTime = startTime.add(const Duration(hours: 2));
+      meetings.add(
+        Meeting( element.nombre!, startTime, endTime, const Color(0xFF0F8644), true)
+      );
+    });
     return meetings;
   }
 }
